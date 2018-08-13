@@ -81,7 +81,7 @@ export class Analyzer {
         this.handlers
             .map(handler => ({
                    handler,
-                   decorator: handler.detect(clazz.declaration, clazz.decorators),
+                   match: handler.detect(clazz.declaration, clazz.decorators),
                  }))
             .filter(isMatchingHandler);
 
@@ -93,8 +93,8 @@ export class Analyzer {
       return undefined;
     }
 
-    const {handler, decorator} = matchingHandlers[0];
-    const {analysis, diagnostics} = handler.analyze(clazz.declaration, decorator);
+    const {handler, match} = matchingHandlers[0];
+    const {analysis, diagnostics} = handler.analyze(clazz.declaration, match);
     let compilation = handler.compile(clazz.declaration, analysis, pool);
     if (!Array.isArray(compilation)) {
       compilation = [compilation];
