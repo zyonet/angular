@@ -1013,7 +1013,7 @@ export function transition(
  *   { params: { time: '1000ms', start: 0, end: 1 }});
  * ```
  *
- * The following invokes the defined animation with a call to `useAnimation()`,
+ * The following example invokes the defined animation with a call to `useAnimation()`,
  * passing in override parameter values.
  *
  * ```js
