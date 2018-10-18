@@ -24,3 +24,12 @@ jasmine_node_test(
         "@ngdeps//minimist",
     ],
 )
+
+ts_library(
+    name = "try_plugin",
+    plugins = ["//packages/compiler-cli/src/ngtsc/tsc_plugin"],
+    srcs = ["some_component.ts"],
+    deps = [
+        "//packages/core",
+    ]
+)
