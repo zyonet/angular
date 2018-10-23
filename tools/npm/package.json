@@ -5,7 +5,7 @@
     "@angular/compiler": "6.1.9",
     "@angular/compiler-cli": "6.1.9",
     "@bazel/karma": "0.20.3",
-    "@bazel/typescript": "0.20.3",
+    "@bazel/typescript": "0.20.3-1-g9c1f4ae",
     "typescript": "~3.1.1"
   },
   "scripts": {

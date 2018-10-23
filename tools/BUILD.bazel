@@ -39,3 +39,17 @@ platform(
         }
         """,
 )
+
+load("@build_bazel_rules_nodejs//:defs.bzl", "nodejs_binary")
+
+nodejs_binary(
+    name = "tsc_wrapped_bin",
+    data = [
+        "//packages/compiler-cli",
+        "@npm//@bazel/typescript",
+    ],
+    entry_point = "@bazel/typescript/tsc_wrapped/tsc_wrapped.js",
+    install_source_map_support = False,
+    templated_args = ["--node_options=--expose-gc"],
+    visibility = ["//visibility:public"],
+)

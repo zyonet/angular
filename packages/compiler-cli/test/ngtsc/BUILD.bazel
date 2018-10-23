@@ -27,9 +27,10 @@ jasmine_node_test(
 
 ts_library(
     name = "try_plugin",
-    plugins = ["//packages/compiler-cli/src/ngtsc/tsc_plugin"],
+    plugins = ["Angular"],
     srcs = ["some_component.ts"],
     deps = [
         "//packages/core",
-    ]
+    ],
+    compiler = "//tools:tsc_wrapped_bin",
 )

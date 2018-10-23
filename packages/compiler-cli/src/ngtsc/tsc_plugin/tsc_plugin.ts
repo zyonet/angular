@@ -1,7 +1,7 @@
 import * as ts from 'typescript';
 import {TscPlugin, createProxy} from '@bazel/typescript';
 
-const NgTscPlugin: TscPlugin = {
+export const NgTscPlugin: TscPlugin = {
   wrap(program: ts.Program, config: {}) {
     const proxy = createProxy(program);
     proxy.getSemanticDiagnostics = (sourceFile: ts.SourceFile) => {
