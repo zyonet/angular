@@ -10,10 +10,3 @@ ts_library(
       "@ngdeps//@bazel/typescript",
     ]
 )
-load("@build_bazel_rules_typescript//internal:tsc_plugin.bzl", "tsc_plugin")
-
-tsc_plugin(
-    name = "tsc_plugin",
-    entry_point = ":tsc_plugin.ts",
-    deps = [":tsc_plugin_lib"],
-)

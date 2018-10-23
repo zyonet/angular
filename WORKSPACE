@@ -6,13 +6,18 @@ load(
     "rules_angular_dev_dependencies",
 )
 
-local_repository(
-    name = "build_bazel_rules_nodejs",
-    path = "../rules_nodejs",
-)
-local_repository(
+# local_repository(
+#     name = "build_bazel_rules_nodejs",
+#     path = "../rules_nodejs",
+# )
+# local_repository(
+#     name = "build_bazel_rules_typescript",
+#     path = "../rules_typescript",
+# )
+http_archive(
     name = "build_bazel_rules_typescript",
-    path = "../rules_typescript",
+    url = "https://github.com/alexeagle/rules_typescript/archive/053f3cfbd4fd328c65aa100409202e446cfe902c.zip",
+    strip_prefix = "rules_typescript-053f3cfbd4fd328c65aa100409202e446cfe902c",
 )
 
 # Angular Bazel users will call this function
