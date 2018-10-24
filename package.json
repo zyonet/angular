@@ -42,7 +42,7 @@
   "devDependencies": {
     "@bazel/ibazel": "^0.1.1",
     "@bazel/karma": "0.20.3",
-    "@bazel/typescript": "0.20.3-1-g9c1f4ae",
+    "@bazel/typescript": "0.20.3-ngtsc.3",
     "@types/angular": "^1.6.47",
     "@types/base64-js": "1.2.5",
     "@types/chokidar": "1.7.3",

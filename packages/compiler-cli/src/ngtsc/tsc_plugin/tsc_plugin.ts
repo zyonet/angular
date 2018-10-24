@@ -1,8 +1,8 @@
 import * as ts from 'typescript';
 import {TscPlugin, createProxy} from '@bazel/typescript';
 
-export const NgTscPlugin: TscPlugin = {
-  wrap(program: ts.Program, config: {}) {
+export class NgTscPlugin implements TscPlugin {
+  wrap(program: ts.Program, config: {}, host: ts.CompilerHost) {
     const proxy = createProxy(program);
     proxy.getSemanticDiagnostics = (sourceFile: ts.SourceFile) => {
       const result: ts.Diagnostic[] = [...program.getSemanticDiagnostics(sourceFile)];
@@ -24,9 +24,9 @@ export const NgTscPlugin: TscPlugin = {
       return result;
     };
     return proxy;
-  },
+  }
 
-  createTransformers(tc: ts.TypeChecker) {
+  createTransformers(fileNameToModuleName: (s: string) => string) {
     const afterDeclarations: Array<ts.TransformerFactory<ts.SourceFile>> =
         [(context: ts.TransformationContext) => (sf: ts.SourceFile) => {
           const visitor = (node: ts.Node): ts.Node => {
@@ -45,7 +45,11 @@ export const NgTscPlugin: TscPlugin = {
       afterDeclarations
     };
   }
-};
 
-// tsc_wrapped expects the plugin to be the default export of this module
-export default NgTscPlugin;
+  generatedFiles(rootFiles: string[]) {
+    return {
+      'file-1.ts': (host: ts.CompilerHost) =>
+         ts.createSourceFile('file-1.ts', 'contents', ts.ScriptTarget.ES5),
+    };
+  }
+}

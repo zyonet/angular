@@ -16,8 +16,9 @@ load(
 # )
 http_archive(
     name = "build_bazel_rules_typescript",
-    url = "https://github.com/alexeagle/rules_typescript/archive/053f3cfbd4fd328c65aa100409202e446cfe902c.zip",
-    strip_prefix = "rules_typescript-053f3cfbd4fd328c65aa100409202e446cfe902c",
+    # From the ngtsc branch
+    url = "https://github.com/bazelbuild/rules_typescript/archive/8b5a650db06ac4affa66a9f8184cb2742eac5a21.zip",
+    strip_prefix = "rules_typescript-8b5a650db06ac4affa66a9f8184cb2742eac5a21",
 )
 
 # Angular Bazel users will call this function
